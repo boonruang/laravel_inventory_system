@@ -14,4 +14,8 @@ class SupplierController extends Controller
         return view('backend.supplier.supplier_all',compact('suppliers'));
 
     } // End Method
+
+    public function SupplierAdd(){
+        return view('backend.supplier.supplier_add');
+    }
 }
