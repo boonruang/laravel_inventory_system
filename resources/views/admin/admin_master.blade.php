@@ -126,6 +126,10 @@
         }
         @endif 
         </script>
+
+        <!-- Datatable init js -->
+        <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
+
     </body>
 
 </html>
