@@ -13,7 +13,7 @@
 
             <h4 class="card-title">Add Supplier Page</h4><br>
 
-            <form method="post" action="{{ route('update.password') }}" id="myForm">
+            <form method="post" action="{{ route('supplier.store') }}" id="myForm">
 
             @csrf
 
