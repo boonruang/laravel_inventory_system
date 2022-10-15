@@ -64,6 +64,7 @@ class UnitController extends Controller
             'message' => 'Unit Deleted Successfully',
             'alert-type' => 'success'
         );
+        
         return redirect()->back()->with($notification);        
     } // End Method
 

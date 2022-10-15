@@ -72,7 +72,7 @@ class SupplierController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('supplier.all')->with($notification);
+        return redirect()->back()->with($notification);
     } // End Method
 
 
