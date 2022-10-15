@@ -76,3 +76,11 @@ php artisan make:controller Pos/SupplierController
 
 php artisan make:model Customer -m
 php artisan make:controller Pos/CustomerController
+
+Laravel Image Intervention
+#to install
+composer require intervention/image
+#to config
+config/app.php (add 2 lines, please follow doc.)
+#to publish 
+php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"
