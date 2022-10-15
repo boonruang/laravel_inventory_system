@@ -3,6 +3,7 @@ install nodejs v16.14.0
 install Composer version 2.4.2 (download Composer-Setup.exe)
 or Command-line installation
 
+########### Website ############
 cd Project1
 composer create-project laravel/laravel basic
 cd basic
@@ -66,3 +67,12 @@ before backup please run 3 command below
 php artisan config:clear
 php artisan cache:clear
 php artisan view:clear
+
+
+########### Inventory System ############
+php artisan make:model Supplier -m
+php artisan make:controller Pos/SupplierController
+
+
+php artisan make:model Customer -m
+php artisan make:controller Pos/CustomerController
