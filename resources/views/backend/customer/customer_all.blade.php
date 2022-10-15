@@ -38,7 +38,7 @@
                     <tr>
                         <td>{{$key+1}}</td>
                         <td>{{$item->name}}</td>
-                        <td><img src="{{asset($item->customer_image)}} style="hight:50px" alt=""></td>
+                        <td><img src="{{asset($item->customer_image)}}" style="height:50px" alt=""></td>
                         <td>{{$item->email}}</td>
                         <td>{{$item->address}}</td>
                         <td>

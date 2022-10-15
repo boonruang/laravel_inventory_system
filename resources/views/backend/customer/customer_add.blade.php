@@ -13,7 +13,7 @@
 
             <h4 class="card-title">Add Customer Page</h4><br>
 
-            <form method="post" action="{{ route('customer.store') }}" id="myForm">
+            <form method="post" action="{{ route('customer.store') }}" id="myForm" enctype="multipart/form-data">
 
             @csrf
 
@@ -55,7 +55,7 @@
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
-                    <img id="showImage" class="rounded" style="width:200px" src="{{(!empty($editData->profile_image))? url('upload/customer_images/'.$editData->customer_image): url('upload/no_image.jpg') }}" alt="Card image cap">
+                    <img id="showImage" class="rounded" style="width:200px" src="{{url('upload/no_image.jpg') }}" alt="Card image cap">
                 </div>
             </div>     
             
