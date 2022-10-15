@@ -13,7 +13,7 @@
 
             <h4 class="card-title">Add Category Page</h4><br>
 
-            <form method="post" action="{{route('unit.store')}}" id="myForm">
+            <form method="post" action="{{route('category.store')}}" id="myForm">
 
             @csrf
 

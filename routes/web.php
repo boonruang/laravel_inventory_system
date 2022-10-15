@@ -66,7 +66,7 @@ Route::controller(UnitController::class)->group(function() {
 Route::controller(CategoryController::class)->group(function() {
     Route::get('/category/all','CategoryAll')->name('category.all');
     Route::get('/category/add','CategoryAdd')->name('category.add');
-    Route::post('/unit/store','UnitStore')->name('unit.store');
+    Route::post('/category/store','CategoryStore')->name('category.store');
     Route::get('/unit/edit/{id}','UnitEdit')->name('unit.edit');
     Route::post('/unit/update/','UnitUpdate')->name('unit.update');
     Route::get('/unit/delete/{id}','UnitDelete')->name('unit.delete');
