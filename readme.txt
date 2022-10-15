@@ -84,3 +84,6 @@ composer require intervention/image
 config/app.php (add 2 lines, please follow doc.)
 #to publish 
 php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"
+
+php artisan make:model Unit -m
+php artisan make:controller Pos/UnitController
