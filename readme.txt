@@ -98,3 +98,6 @@ php artisan make:controller Pos/ProductController
     } 
 #View Access    
 <td>{{$item['supplier']['name']}}</td>
+
+php artisan make:model Purchase -m
+php artisan make:controller Pos/PurchaseController
