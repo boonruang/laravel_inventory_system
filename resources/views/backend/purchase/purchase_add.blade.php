@@ -11,7 +11,7 @@
 <div class="card">
     <div class="card-body">
 
-    <h4 class="card-title">Add Product </h4><br>
+    <h4 class="card-title">Add Purchase </h4><br>
 
     <div class="row">
     <div class="col-md-4">
@@ -96,6 +96,26 @@ $(function(){
         });
     });
 });
+</script>
+
+<script type="text/javascript">
+    $(function(){
+        $(document).on('change','#category_id', function(){
+            var category_id = $(this).val();
+            $.ajax({
+                url: "{{ route('get-product') }}",
+                type: "GET",
+                data: {category_id : category_id},
+                success: function(data) {
+                    var html = '<option value="">Select Product</option>';
+                    $.each(data,function(key,v){
+                        html += '<option value=" '+v.id+' ">'+v.name+'</option>';
+                    });
+                    $('#product_id').html(html);
+                }
+            });
+        });
+    });
 </script>
 
 @endsection

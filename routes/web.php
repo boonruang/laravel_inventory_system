@@ -98,6 +98,7 @@ Route::controller(PurchaseController::class)->group(function() {
 // Default All Route
 Route::controller(DefaultController::class)->group(function() {
     Route::get('/get-category','GetCategory')->name('get-category');
+    Route::get('/get-product','GetProduct')->name('get-product');
 
 });
 
