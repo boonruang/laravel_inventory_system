@@ -15,9 +15,15 @@ use Illuminate\Support\Carbon;
 class PurchaseController extends Controller
 {
     public function PurchaseAll(){
-
         $allData = Purchase::orderBy('date','desc')->orderBy('id','desc')->get();
-
         return view('backend.purchase.purchase_all',compact('allData'));
     } //End Method
+
+    public function PurchaseAdd(){
+        $suppliers = Supplier::all();
+        $units = Unit::all();
+        $categories = Category::all();
+        return view('backend.purchase.purchase_add',compact('suppliers','units','categories'));
+
+    } // End Method
 }
