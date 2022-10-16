@@ -87,3 +87,14 @@ php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLa
 
 php artisan make:model Unit -m
 php artisan make:controller Pos/UnitController
+
+php artisan make:model Product -m
+php artisan make:controller Pos/ProductController
+
+#BelongTo
+#Model
+    public function category() {
+        return $this->belongsTo(BlogCategory::class,'blog_category_id','id');
+    }
+#View Access    
+<td>{{$item['category']['blog_category']}}</td>
