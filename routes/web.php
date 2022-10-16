@@ -9,6 +9,7 @@ use App\Http\Controllers\Pos\UnitController;
 use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\ProductController;
 use App\Http\Controllers\Pos\PurchaseController;
+use App\Http\Controllers\Pos\DefaultController;
 
 
 Route::get('/', function () {
@@ -91,6 +92,12 @@ Route::controller(PurchaseController::class)->group(function() {
     Route::get('/purchase/all','PurchaseAll')->name('purchase.all');
     Route::get('/purchase/add','PurchaseAdd')->name('purchase.add');
 
+
+});
+
+// Default All Route
+Route::controller(DefaultController::class)->group(function() {
+    Route::get('/get-category','GetCategory')->name('get-category');
 
 });
 

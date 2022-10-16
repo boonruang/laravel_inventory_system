@@ -101,3 +101,20 @@ php artisan make:controller Pos/ProductController
 
 php artisan make:model Purchase -m
 php artisan make:controller Pos/PurchaseController
+
+php artisan make:controller Pos/DefaultController
+
+#get-category # the first query complex
+
+class DefaultController extends Controller
+{
+    public function GetCategory(Request $request){
+        $supplier_id = $request->supplier_id;
+
+
+        $allCategory = Product::with(['category'])->select('category_id')->where('supplier_id',$supplier_id)->groupBy('category_id')->get();
+
+        return response()->json($allCategory);
+
+    } // End method
+}
