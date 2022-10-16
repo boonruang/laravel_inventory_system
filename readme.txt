@@ -91,10 +91,10 @@ php artisan make:controller Pos/UnitController
 php artisan make:model Product -m
 php artisan make:controller Pos/ProductController
 
-#BelongTo
-#Model
-    public function category() {
-        return $this->belongsTo(BlogCategory::class,'blog_category_id','id');
-    }
+#BelongsTo
+#Model Product
+    public function supplier() {
+        return $this->belongsTo(Supplier::class,'supplier_id','id');
+    } 
 #View Access    
-<td>{{$item['category']['blog_category']}}</td>
+<td>{{$item['supplier']['name']}}</td>

@@ -13,7 +13,7 @@
 
             <h4 class="card-title">Add Product Page</h4><br>
 
-            <form method="post" action="{{ route('supplier.store') }}" id="myForm">
+            <form method="post" action="{{ route('product.store') }}" id="myForm" >
 
             @csrf
 
