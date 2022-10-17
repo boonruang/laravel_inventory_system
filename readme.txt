@@ -118,3 +118,8 @@ class DefaultController extends Controller
 
     } // End method
 }
+
+#Add script
+handlebars.js
+notify cdn
+
