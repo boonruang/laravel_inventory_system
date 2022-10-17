@@ -32,6 +32,7 @@ class DefaultController extends Controller
         $allProduct = Product::where('category_id',$category_id)->get();
 
         return response()->json($allProduct);
+        //allproduct where category_id=id
 
     } // End method
 }
