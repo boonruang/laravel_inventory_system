@@ -63,7 +63,8 @@
     <div class="col-md-4">
         <div class="md-3">
             <label class="form-label" style="margin-top: 40px"> </label>
-            <input type="submit" class="btn btn-secondary btn-rounded waves-effect waves-light" value="Add More">
+            {{-- <input type="submit" class="btn btn-secondary btn-rounded waves-effect waves-light" value="Add More"> --}}
+            <i class="btn btn-secondary btn-rounded waves-effect waves-light fas fa-plus-circle addeventmore"> Add More</i>
         </div>
     </div>      
 
@@ -112,38 +113,70 @@
 </div> <!-- end container -->
 </div> <!-- end page-content -->
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        ${document}.on("click",".addeventmore",function(){
+            var date = $('#date').val();
+            var purchase_no = $('#purchase_no').val();
+            var supplier_id = $('#supplier_id').val();
+            var category_id = $('#category_id').val();
+            var category_name = $('#category_id')find('option:selected').text();
+            var product_id = $('#product_id').val();
+            var product_name = $('#product_id')find('option:selected').text();
+
+            if(date == ''){
+                $.notify("Date is Required", {globalPosition: 'top right', className: 'error'});
+                return false;
+            }
+            if(purchase_no == ''){
+                $.notify("Purchase No is Required", {globalPosition: 'top right', className: 'error'});
+                return false;
+            }
+            if(supplier_id == ''){
+                $.notify("Supplier is Required", {globalPosition: 'top right', className: 'error'});
+                return false;
+            }
+            if(category_id == ''){
+                $.notify("Category is Required", {globalPosition: 'top right', className: 'error'});
+                return false;
+            }
+            if(product_id == ''){
+                $.notify("Product Field is Required", {globalPosition: 'top right', className: 'error'});
+                return false;
+            }
+
+            var source = $("document-template").html();
+            var template = Handlebars.compile(source);
+
+        });
+    });
+</script>
+
 <script id="document-template" type="text/x-handlebars-template">
     <tr class="delete_add_more_item" id="delete_add_more_item">
         <input type="hidden" name="date[]" value="@{{date}}">
         <input type="hidden" name="purchase_no[]" value="@{{purchase_no}}">
         <input type="hidden" name="supplier_id[]" value="@{{supplier_id}}">
-    
         <td>
             <input type="hidden" name="category_id[]" value="@{{category_id}}">
             @{{ category_name}}
         </td>
-    
         <td>
             <input type="hidden" name="product_id[]" value="@{{product_id}}">
             @{{ product_name}}
         </td>
-    
         <td>
             <input type="number" min="1" class="form-control buying_qty text-right" name="buying_qty[]" value="">
         </td>
-    
         <td>
             <input type="number" class="form-control unit_price text-right" name="unit_price[]" value="">
         </td>
-    
         <td>
             <input type="text" class="form-control" name="description[]">
         </td>
-    
         <td>
             <input type="number" class="form-control buying_price text-right" name="buying_price[]" value="0" readonly>
         </td>
-    
         <td>
             <i class="btn btn-danger btn-sm fas fa-window-close removeeventmore"></i>
         </td>
