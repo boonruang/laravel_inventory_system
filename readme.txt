@@ -123,3 +123,13 @@ class DefaultController extends Controller
 handlebars.js
 notify cdn
 
+#add select2
+
+#add Invoice
+php artisan make:controller Pos/InvoiceController
+
+php artisan make:model Invoice -m
+php artisan make:model InvoiceDetail -m
+php artisan make:model Payment -m
+php artisan make:model PaymentDetail -m
+
