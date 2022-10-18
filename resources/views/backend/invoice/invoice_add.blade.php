@@ -75,13 +75,12 @@
             <table class="table-sm table-bordered" width="100%" style="border-color: #ddd">
                 <thead>
                     <tr>
-                        <th>Category</th>
+                        <th width="15%">Category</th>
                         <th>Product Name</th>
-                        <th>PSC/KG</th>
-                        <th>Unit Price</th>
-                        <th>Description</th>
-                        <th>Total Price</th>
-                        <th>Action</th>
+                        <th width="7%">PSC/KG</th>
+                        <th width="10%">Unit Price</th>
+                        <th width="15%">Total Price</th>
+                        <th width="7%">Action</th>
                     </tr>
                 </thead>
                     <tbody id="addRow" class="addRow">
@@ -90,7 +89,7 @@
 
                     <tbody>
                         <tr>
-                            <td colspan="5"></td>
+                            <td colspan="4">Grand Total</td>
                             <td>
                                 <input type="text" name="estimated_amount" value="0" id="estimated_amount" class="form-control estimated_amount" readonly style="background-color: #ddd">
                             </td>
@@ -98,6 +97,13 @@
                         </tr>
                     </tbody>
             </table><br>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <textarea name="description" class="form-control" id="description" placeholder="Write Description Here"></textarea>
+                </div>
+            </div><br>
+
             <div class="form-group">
                 <button type="submit" class="btn btn-info" id="storeButton">Invoice Store</button>
             </div>
@@ -114,9 +120,8 @@
 
 <script id="document-template" type="text/x-handlebars-template">
     <tr class="delete_add_more_item" id="delete_add_more_item">
-        <input type="hidden" name="date[]" value="@{{date}}">
-        <input type="hidden" name="purchase_no[]" value="@{{purchase_no}}">
-        <input type="hidden" name="supplier_id[]" value="@{{supplier_id}}">
+        <input type="hidden" name="date" value="@{{date}}">
+        <input type="hidden" name="invoice_no" value="@{{invoice_no}}">
         <td>
             <input type="hidden" name="category_id[]" value="@{{category_id}}">
             @{{ category_name}}
@@ -126,16 +131,13 @@
             @{{ product_name}}
         </td>
         <td>
-            <input type="number" min="1" class="form-control buying_qty text-right" name="buying_qty[]" value="">
+            <input type="number" min="1" class="form-control selling_qty text-right" name="selling_qty[]" value="">
         </td>
         <td>
             <input type="number" class="form-control unit_price text-right" name="unit_price[]" value="">
         </td>
         <td>
-            <input type="text" class="form-control" name="description[]">
-        </td>
-        <td>
-            <input type="number" class="form-control buying_price text-right" name="buying_price[]" value="0" readonly>
+            <input type="number" class="form-control selling_price text-right" name="selling_price[]" value="0" readonly>
         </td>
         <td>
             <i class="btn btn-danger btn-sm fas fa-window-close removeeventmore"></i>
@@ -147,8 +149,7 @@
     $(document).ready(function(){
         $(document).on("click",".addeventmore",function(){
             var date = $('#date').val();
-            var purchase_no = $('#purchase_no').val();
-            var supplier_id = $('#supplier_id').val();
+            var invoice_no = $('#invoice_no').val();
             var category_id = $('#category_id').val();
             var category_name = $('#category_id').find('option:selected').text();
             var product_id = $('#product_id').val();
@@ -156,14 +157,6 @@
 
             if(date == ''){
                 $.notify("Date is Required", {globalPosition: 'top right', className: 'error'});
-                return false;
-            }
-            if(purchase_no == ''){
-                $.notify("Purchase No is Required", {globalPosition: 'top right', className: 'error'});
-                return false;
-            }
-            if(supplier_id == ''){
-                $.notify("Supplier is Required", {globalPosition: 'top right', className: 'error'});
                 return false;
             }
             if(category_id == ''){
@@ -179,8 +172,7 @@
             var template = Handlebars.compile(source);
             var data = {
                 date:date,
-                purchase_no:purchase_no,
-                supplier_id: supplier_id,
+                invoice_no:invoice_no,
                 category_id: category_id,
                 category_name: category_name,
                 product_id: product_id,
@@ -195,11 +187,11 @@
             totalAmountPrice();
         });
 
-        $(document).on('keyup click','.unit_price,.buying_qty',function(){
+        $(document).on('keyup click','.unit_price,.selling_qty',function(){
             var unit_price = $(this).closest("tr").find("input.unit_price").val();
-            var qty = $(this).closest("tr").find("input.buying_qty").val();
+            var qty = $(this).closest("tr").find("input.selling_qty").val();
             var total = unit_price * qty;
-            $(this).closest("tr").find("input.buying_price").val(total);
+            $(this).closest("tr").find("input.selling_price").val(total);
             var sum = sum + total;
             totalAmountPrice();
             
@@ -209,7 +201,7 @@
 
         function totalAmountPrice(){
             var sum = 0;
-            $(".buying_price").each(function(){
+            $(".selling_price").each(function(){
                 var value = $(this).val();
                 if (!isNaN(value) && value.length != 0){
                     sum += parseFloat(value);
