@@ -27,6 +27,7 @@ class InvoiceController extends Controller
 
     public function InvoiceAdd() {
         $categories = Category::all();
+        $customer = Customer::all();
         $invoice_data = Invoice::orderBy('id','desc')->first();
 
         if ($invoice_data == null) {
@@ -37,6 +38,6 @@ class InvoiceController extends Controller
             $invoice_no = $invoice_data+1;
         }
         $date = date('Y-m-d');
-        return view('backend.invoice.invoice_add',compact('invoice_no','categories','date'));
+        return view('backend.invoice.invoice_add',compact('invoice_no','categories','date','customer'));
     } // End method
 }
