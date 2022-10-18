@@ -89,7 +89,14 @@
 
                     <tbody>
                         <tr>
-                            <td colspan="4">Grand Total</td>
+                            <td colspan="4"> Discount</td>
+                            <td>
+                                <input type="text" name="discount_amount" id="discount_amount" class="form-control discount_amount" placeholder="Discount Amount">
+                            </td>
+                            <td></td>                            
+                        </tr>
+                        <tr>
+                            <td colspan="4"> Grand Total</td>
                             <td>
                                 <input type="text" name="estimated_amount" value="0" id="estimated_amount" class="form-control estimated_amount" readonly style="background-color: #ddd">
                             </td>
@@ -193,8 +200,12 @@
             var total = unit_price * qty;
             $(this).closest("tr").find("input.selling_price").val(total);
             var sum = sum + total;
+
+            $('#discount_amount').trigger('keyup');
+        });
+
+        $(document).on('keyup','#discount_amount',function(){
             totalAmountPrice();
-            
         });
 
         // Calculate sum of amount in invoice
@@ -207,6 +218,12 @@
                     sum += parseFloat(value);
                 }
             });
+
+            var discount_amount = parseFloat($('#discount_amount').val());
+
+            if (!isNaN(discount_amount) && discount_amount.length != 0){
+                    sum -= parseFloat(discount_amount);
+            }
 
             $("#estimated_amount").val(sum);
         }
@@ -235,39 +252,39 @@ $(function(){
 </script>
 
 <script type="text/javascript">
-    $(function(){
-        $(document).on('change','#category_id', function(){
-            var category_id = $(this).val();
-            $.ajax({
-                url: "{{ route('get-product') }}",
-                type: "GET",
-                data: {category_id : category_id},
-                success: function(data) {
-                    var html = '<option value="">Select Product</option>';
-                    $.each(data,function(key,v){
-                        html += '<option value=" '+v.id+' ">'+v.name+'</option>';
-                    });
-                    $('#product_id').html(html);
-                }
-            });
+$(function(){
+    $(document).on('change','#category_id', function(){
+        var category_id = $(this).val();
+        $.ajax({
+            url: "{{ route('get-product') }}",
+            type: "GET",
+            data: {category_id : category_id},
+            success: function(data) {
+                var html = '<option value="">Select Product</option>';
+                $.each(data,function(key,v){
+                    html += '<option value=" '+v.id+' ">'+v.name+'</option>';
+                });
+                $('#product_id').html(html);
+            }
         });
     });
+});
 </script>
 
 <script type="text/javascript">
-    $(function(){
-        $(document).on('change','#product_id', function(){
-            var product_id = $(this).val();
-            $.ajax({
-                url: "{{ route('check-product-stock') }}",
-                type: "GET",
-                data: {product_id : product_id},
-                success: function(data) {
-                    $('#current_stock_qty').val(data);
-                }
-            });
+$(function(){
+    $(document).on('change','#product_id', function(){
+        var product_id = $(this).val();
+        $.ajax({
+            url: "{{ route('check-product-stock') }}",
+            type: "GET",
+            data: {product_id : product_id},
+            success: function(data) {
+                $('#current_stock_qty').val(data);
+            }
         });
     });
+});
 </script>
 
 @endsection
