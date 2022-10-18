@@ -18,7 +18,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{route('category.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;">Category Add</a><br><br>
+                <a href="{{route('category.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Category Add</i></a><br><br>
                 <h4 class="card-title">Category All Data</h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
