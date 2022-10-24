@@ -146,7 +146,7 @@
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line text-center">
-                                        <strong>Total</strong></td>
+                                        <strong>Subtotal</strong></td>
                                     <td class="no-line text-end">{{$total_sum}}</td>
                                 </tr>
                                 <tr>
@@ -156,8 +156,8 @@
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line text-center">
-                                        <strong>Total</strong></td>
-                                    <td class="no-line text-end">{{$total_sum}}</td>
+                                        <strong>Discount Amount</strong></td>
+                                    <td class="no-line text-end">${{$payment->discount_amount}}</td>
                                 </tr>
                                 <tr>
                                     <td class="no-line"></td>
@@ -166,8 +166,28 @@
                                     <td class="no-line"></td>
                                     <td class="no-line"></td>
                                     <td class="no-line text-center">
-                                        <strong>Total</strong></td>
-                                    <td class="no-line text-end"><h4 class="m-0">{{$total_sum}}</h4></td>
+                                        <strong>Paid Amount</strong></td>
+                                    <td class="no-line text-end">${{$payment->paid_amount}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line text-center">
+                                        <strong>Due Amount</strong></td>
+                                    <td class="no-line text-end">${{$payment->due_amount}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line text-center">
+                                        <strong>Grand Total</strong></td>
+                                    <td class="no-line text-end"><h4 class="m-0">${{$payment->total_amount}}</h4></td>
                                 </tr>                                                                
                                 </tbody>
                             </table>
@@ -176,7 +196,7 @@
                         <div class="d-print-none">
                             <div class="float-end">
                                 <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
-                                <a href="#" class="btn btn-primary waves-effect waves-light ms-2">Send</a>
+                                <a href="#" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
                             </div>
                         </div>
                     </div>
