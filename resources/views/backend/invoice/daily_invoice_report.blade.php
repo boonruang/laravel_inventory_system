@@ -13,9 +13,9 @@
 
 <h4 class="card-title">Daily Invoice Report</h4><br>
 
-<form method="" action="" target="_blank" id="myForm">
+<form method="GET" action="{{route('daily.invoice.pdf')}}" target="_blank" id="myForm">
 <div class="row">
-    
+
     <div class="col-md-4">
         <div class="md-3 form-group">
             <label class="form-label">Start Date</label>

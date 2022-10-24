@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-6 mt-4 text-end">
                             <address>
-                                <strong>Order Date:</strong><br>
+                                <strong>Invoice Date:</strong><br>
                                 {{date('d-M-Y',strtotime($invoice->date))}}<br><br>
                             </address>
                         </div>
