@@ -133,3 +133,6 @@ php artisan make:model InvoiceDetail -m
 php artisan make:model Payment -m
 php artisan make:model PaymentDetail -m
 
+Relationship
+belongsTo M-1
+hasMany 1-M
