@@ -134,5 +134,9 @@ php artisan make:model Payment -m
 php artisan make:model PaymentDetail -m
 
 Relationship
-belongsTo M-1
-hasMany 1-M
+belongsTo M-1 (product)
+hasMany 1-M (invoice_details)
+
+DB::transaction
+
+Print PDF
