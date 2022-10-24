@@ -221,4 +221,8 @@ class InvoiceController extends Controller
         $invoice = Invoice::with('invoice_details')->findOrFail($id);
         return view('backend.pdf.invoice_pdf',compact('invoice'));
     } //End Method
+
+    public function DailyInvoiceReport(){
+        return view('backend.invoice.daily_invoice_report');
+    } //End Method
 }
