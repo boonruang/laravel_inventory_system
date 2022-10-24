@@ -171,4 +171,21 @@ class InvoiceController extends Controller
         $invoice = Invoice::with('invoice_details')->findOrFail($id);
         return view('backend.invoice.invoice_approve',compact('invoice'));
     } // End Method
+    
+    public function ApprovalStore(Request $request,$id){
+
+        foreach($request->selling_qty as $key => $val) {
+            $invoice_details = InvoiceDetail('id',$key)->first();
+            $product = Product::where('id',$invoice_details->product_id)->first();
+
+            if($product->quantity < $request->selling_qty[$key]){
+                $notification = array(
+                    'message' => 'Sorry you approve Maximum value',
+                    'alert-type' => 'error'
+                );
+            }
+            return redirect()->back()->with($notification);
+        } // End foreach
+        
+    } // End Method
 }

@@ -43,7 +43,7 @@ $payment = App\Models\Payment::where('invoice_id',$invoice->id)->first();
                     </tbody>
                 </table>
 
-                <form method="POST" action="">
+                <form method="POST" action="{{route('approval.store',$invoice->id)}}">
 
                     <table border="1" class="table table-dark" width="100%">
                         <thead>
@@ -64,6 +64,10 @@ $payment = App\Models\Payment::where('invoice_id',$invoice->id)->first();
                             @endphp
                             @foreach($invoice['invoice_details'] as $key => $details)
                             <tr>
+                                <input type="hidden" name="category_id[]" value="{{$details->category_id}}">
+                                <input type="hidden" name="product_id[]" value="{{$details->product_id}}">
+                                <input type="hidden" name="selling_qty[{{$details->id}}]" value="{{$details->selling_qty}}">
+
                                 <td class="text-center">{{$key + 1 }}</td>
                                 <td class="text-center">{{$details['category']['name']}}</td>
                                 <td class="text-center">{{$details['product']['name']}}</td>
