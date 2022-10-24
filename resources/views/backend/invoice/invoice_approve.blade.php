@@ -44,7 +44,7 @@ $payment = App\Models\Payment::where('invoice_id',$invoice->id)->first();
                 </table>
 
                 <form method="POST" action="{{route('approval.store',$invoice->id)}}">
-
+                    @csrf
                     <table border="1" class="table table-dark" width="100%">
                         <thead>
                             <tr>
