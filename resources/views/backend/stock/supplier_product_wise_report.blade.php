@@ -26,7 +26,7 @@
         <strong>Supplier Wise Report</strong>
         <input type="radio" name="supplier_product_wise" value="supplier_wise" class="search_value"> &nbsp;&nbsp;
 
-        <strong>Supplier Wise Report</strong>
+        <strong>Product Wise Report</strong>
         <input type="radio" name="supplier_product_wise" value="product_wise" class="search_value">
 
 
