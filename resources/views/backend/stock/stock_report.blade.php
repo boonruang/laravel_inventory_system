@@ -49,9 +49,9 @@
                         <td>{{$item['unit']['name']}}</td>
                         <td>{{$item['category']['name']}}</td>
                         <td>{{$item->name}}</td>
-                        <td>{{$buying_total}}</td>
-                        <td>{{$selling_total}}</td>
-                        <td>{{$item->quantity}}</td>
+                        <td><span class="btn btn-success">{{$buying_total}}</span></td>
+                        <td><span class="btn btn-info">{{$selling_total}}</span></td>
+                        <td><span class="btn btn-danger">{{$item->quantity}}</span></td>
                     </tr>                        
                     @endforeach                        
 
