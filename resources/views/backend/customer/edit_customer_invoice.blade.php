@@ -70,6 +70,12 @@
 
             <div class="row">
                 <div class="col-12">
+
+                    <form method="post" action="{{ route('customer.update.invoice',$payment->invoice_id)}}">
+                    @csrf
+
+
+
                 <div>
                     <div class="p-2">
                     </div>
@@ -146,6 +152,7 @@
                                     <td class="no-line"></td>
                                     <td class="no-line text-center">
                                         <strong>Due Amount</strong></td>
+                                        <input type="hidden" name="new_paid_amount" value={{$payment->due_amount}}>
                                     <td class="no-line text-end">${{$payment->due_amount}}</td>
                                 </tr>
                                 <tr>
@@ -188,6 +195,9 @@
                     </div>
                 </div>
     
+                
+                    </form>                
+
                 </div>
             </div> <!-- end row -->            
 

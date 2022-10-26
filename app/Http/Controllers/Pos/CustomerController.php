@@ -134,4 +134,17 @@ class CustomerController extends Controller
         $payment = Payment::where('invoice_id',$invoice_id)->first();
         return view('backend.customer.edit_customer_invoice',compact('payment'));
     } // End Method
+
+    public function CustomerUpdateInvoice(Request $request,$invoice_id){
+        if ($request->new_paid_amount < $request->paid_amount) {
+            $notification = array(
+                'message' => 'Sorry You Paid Maximum Value',
+                'alert-type' => 'error'
+            );
+    
+            return redirect()->back()->with($notification);    
+        } else {
+            
+        }
+    } // End Method
 }
