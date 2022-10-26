@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/customer/delete/{id}','CustomerDelete')->name('customer.delete');
         Route::get('/credit/customer','CreditCustomer')->name('credit.customer');
         Route::get('/credit/customer/print/pdf','CreditCustomerPrintPdf')->name('credit.customer.print.pdf');
+        Route::get('/customer/edit/invoice/{invoice_id}','CustomerEditInvoice')->name('customer.edit.invoice');
 
     });
 
