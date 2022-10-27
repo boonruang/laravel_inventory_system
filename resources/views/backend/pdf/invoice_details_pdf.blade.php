@@ -8,12 +8,12 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Invoice</h4>
+            <h4 class="mb-sm-0">Customer Payment Report</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
-                    <li class="breadcrumb-item active">Invoice</li>
+                    <li class="breadcrumb-item active">Customer Payment Report</li>
                 </ol>
             </div>
 
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="invoice-title">
-                        <h4 class="float-end font-size-16"><strong>Invoice No # {{$invoice->invoice_no}}</strong></h4>
+                        <h4 class="float-end font-size-16"><strong>Invoice No # {{$payment['invoice']['invoice_no']}}</strong></h4>
                         <h3>
                             <img src="{{asset('logo/logo-dark.png')}}" alt="logo" height="24"/>
                             Shopping Mall
@@ -49,16 +49,12 @@
                         <div class="col-6 mt-4 text-end">
                             <address>
                                 <strong>Invoice Date:</strong><br>
-                                {{date('d-M-Y',strtotime($invoice->date))}}<br><br>
+                                {{date('d-M-Y',strtotime($payment['invoice']['date']))}}<br><br>
                             </address>
                         </div>
                     </div>
                 </div>
             </div>
-
-            @php
-            $payment = App\Models\Payment::where('invoice_id',$invoice->id)->first();
-            @endphp
 
             <div class="row">
             <div class="col-12">
@@ -74,8 +70,6 @@
                                 <td><strong>Customer Name</strong></td>
                                 <td class="text-center"><strong>Comtomer Mobile</strong></td>
                                 <td class="text-center"><strong>Address</strong>
-                                <td class="text-center"><strong>Description</strong>
-                                </td>
                             </tr>
                             </thead>
                             <tbody>
@@ -85,7 +79,6 @@
                                 <td>{{$payment['customer']['name']}}</td>
                                 <td class="text-center">{{$payment['customer']['mobile_no']}}</td>
                                 <td class="text-center">{{$payment['customer']['email']}}</td>
-                                <td class="text-center">{{$invoice->description}}</td>
                             </tr>
 
                             </tbody>
@@ -121,8 +114,9 @@
                                 <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                 @php
                                 $total_sum = '0';
+                                $invoice_Details = App\Models\InvoiceDetail::where('invoice_id',$payment->invoice_id)->get();
                                 @endphp
-                                @foreach($invoice['invoice_details'] as $key => $details)                                
+                                @foreach($invoice_Details as $key => $details)                                
                                 <tr>
 
                                     <td class="text-center">{{$key + 1 }}</td>
@@ -145,7 +139,7 @@
                                     <td class="no-line"></td>
                                     <td class="no-line text-center">
                                         <strong>Subtotal</strong></td>
-                                    <td class="no-line text-end">{{$total_sum}}</td>
+                                    <td class="no-line text-end">{{number_format($total_sum, 2, '.', ',')}}</td>
                                 </tr>
                                 <tr>
                                     <td class="no-line"></td>
@@ -185,7 +179,7 @@
                                     <td class="no-line"></td>
                                     <td class="no-line text-center">
                                         <strong>Grand Total</strong></td>
-                                    <td class="no-line text-end"><h4 class="m-0">${{$payment->total_amount}}</h4></td>
+                                    <td class="no-line text-end"><h4 class="m-0">${{number_format($payment->total_amount, 2, '.', ',')}}</h4></td>
                                 </tr>                                                                
                                 </tbody>
                             </table>
