@@ -174,7 +174,7 @@ class CustomerController extends Controller
         }
     } // End Method
 
-    public function CustomerInvoiceDetailsPdf($invoice_id) {
+    public function CustomerInvoiceDetails($invoice_id) {
         $payment = Payment::where('invoice_id',$invoice_id)->first();
         return view('backend.pdf.invoice_details_pdf',compact('payment'));
     } // End Method
@@ -182,5 +182,10 @@ class CustomerController extends Controller
     public function PaidCustomer(){
         $allData = Payment::where('paid_status','!=','full_due')->get();
         return view('backend.customer.customer_paid',compact('allData'));
+    } // End Method
+
+    public function PaidCustomerPrintPdf(){
+        $allData = Payment::where('paid_status','!=','full_due')->get();
+        return view('backend.pdf.customer_paid_paid',compact('allData'));
     } // End Method
 }

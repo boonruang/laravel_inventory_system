@@ -18,7 +18,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{route('customer.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-plus-circle"> Print Paid Customer</i></a><br><br>
+                <a href="{{route('paid.customer.print.pdf')}}" target="_blank" class="btn btn-dark btn-rounded waves-effect waves-light" style="float:right;"><i class="fas fa-print"> Print Paid Customer</i></a><br><br>
                 <h4 class="card-title">Paid Customer All </h4>
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -42,7 +42,7 @@
                         <td>{{date('m-d-Y',strtotime($item['invoice']['date']))}}</td>
                         <td>{{$item->due_amount}}</td>
                         <td>
-                            <a href="{{route('customer.edit',$item->id)}}" class="btn btn-info sm" title="Edit Data"><i class="fas fa-eye"></i></a>
+                            <a href="{{route('customer.invoice.details.pdf',$item->invoice_id)}}" target="_blank" class="btn btn-info sm" title="Customer Details"><i class="fas fa-eye"></i></a>
                         </td>
 
                     </tr>                        
