@@ -180,7 +180,26 @@
                                     <td class="no-line text-center">
                                         <strong>Grand Total</strong></td>
                                     <td class="no-line text-end"><h4 class="m-0">${{number_format($payment->total_amount, 2, '.', ',')}}</h4></td>
-                                </tr>                                                                
+                                </tr>       
+                                
+                                <tr>
+                                    <td colspan="7" style="text-align: center;font-weight: bold;">Paid Summary</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4" style="text-align: center;font-weight: bold;">Date</td>
+                                    <td colspan="3" style="text-align: center;font-weight: bold;">Amount</td>
+                                </tr>
+                                @php
+                                $payment_details = App\Models\PaymentDetail::where('invoice_id',$payment->invoice_id)->get();
+                                @endphp
+                                @foreach ($payment_details as $item)
+                                <tr>
+                                    <td colspan="4" style="text-align: center;font-weight: bold;">{{date('m-d-Y',strtotime($item->date))}}</td>
+                                    <td colspan="3" style="text-align: center;font-weight: bold;">{{$item->current_paid_amount}}</td>
+                                </tr>
+                                @endforeach
+
                                 </tbody>
                             </table>
                         </div>
